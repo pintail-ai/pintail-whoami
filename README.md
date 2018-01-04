@@ -19,6 +19,8 @@ This project is a very simple example built for a docker tutorial using Node, Ex
 
  To work with Docker you will need [Docker](https://docs.docker.com/engine/installation/) installed
 
+ This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+
 ## Getting Started
 
 To Build
@@ -47,5 +49,23 @@ To run your local build
 
 `docker run -d --rm -p 80:80 --name pintail-whoami pintail-whoami`
 
+## Docker Compose
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+The docker-compose.yml file is designed to explain what Docker compose is and how it works.  It simply spins up two containers by default the pintail whoami image and [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy).  The nginx proxy is designed to automatically route and load balence to docker images running on a network.
+
+To start up the images using Docker compose 
+`docker-compose up -d`
+
+To see the images running
+`docker-compose ps`
+
+To see the logs of all the containers Docker compose started
+`docker-compose logs -f`
+
+Once you can see that the images started up correctly go to [localhost](localhost) on you machine to see pintail-whoami running
+
+To scale up the number of pintail-whoami containers running
+`docker-compose up --scale pintail-whoami=2 -d`
+
+After you have scaled up the number of pintail-whoami containers running greater than one you can refresh [localhost](localhost) and you should the ID beneath "Welcome to the Pintail.ai Docker Example!" change.  This indicates that the nginx-proxy is forwarding you to different Docker containers!
+

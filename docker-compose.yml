@@ -1,0 +1,13 @@
+version: '2'
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  pintail-whoami:
+    image: pintailai/pintail-whoami:0.0.1
+    environment:
+      - VIRTUAL_HOST=localhost
