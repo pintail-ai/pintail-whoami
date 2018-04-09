@@ -1,0 +1,8 @@
+version: '3'
+services:
+  pintail-whoami:
+    image: pintailai/pintail-whoami:0.0.1
+    environment:
+      - VIRTUAL_HOST=localhost
+    ports:
+      - "80:80"
